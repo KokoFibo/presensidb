@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class SyncUserController extends Controller
 {
@@ -153,5 +154,28 @@ class SyncUserController extends Controller
             'updated' => $updated,
             'total' => count($users),
         ]);
+    }
+
+    public function reset_password()
+    {
+        try {
+            $newPassword = "12345aja";
+            $hashedPassword = Hash::make($newPassword);
+
+            $affectedRows = User::query()->update([
+                'password' => $hashedPassword
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Password berhasil direset untuk ' . $affectedRows . ' users',
+                'new_password' => $newPassword
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi error: ' . $e->getMessage()
+            ], 500);
+        }
     }
 }
