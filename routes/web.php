@@ -35,4 +35,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('users', Userwr::class)->name('users');
     Route::get('/sync-users', [SyncUserController::class, 'syncFromPayroll'])->name('sync-user');
+    Route::get('/reset', [SyncUserController::class, 'reset_password'])->name('reset');
 });
