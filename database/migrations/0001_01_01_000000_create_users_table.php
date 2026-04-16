@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('company_name')->nullable();
-            $table->integer('db_code');
+            $table->string('db_code');
             $table->integer('id_karyawan')->unique();
             $table->integer('role');
             $table->string('language')->default('Id');

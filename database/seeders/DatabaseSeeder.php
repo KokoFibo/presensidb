@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'kokonacci@gmail.com',
             'password' => Hash::make("YF2024Aja"),
             'company_name' => 'Kokofibo',
-            'db_code' => 1,
+            'db_code' => 'salary',
             'role' => 8,
             'language' => 'Id',
             'id_karyawan' => 80000,
