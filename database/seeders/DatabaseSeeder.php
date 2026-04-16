@@ -19,12 +19,13 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Anton Developer',
             'email' => 'kokonacci@gmail.com',
-            'password' => Hash::make("YF2024Aja"),
+            'password' => Hash::make("12345aja"),
             'company_name' => 'Kokofibo',
             'db_code' => 'salary',
             'role' => 8,
             'language' => 'Id',
             'id_karyawan' => 80000,
+            'outsource' => 0,
         ]);
     }
 }
