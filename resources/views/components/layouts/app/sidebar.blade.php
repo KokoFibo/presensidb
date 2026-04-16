@@ -20,9 +20,9 @@
                 <flux:navlist.item icon="home" :href="('users')" :current="request()->routeIs('users')"
                     wire:navigate>{{ __('Users') }}</flux:navlist.item>
                 <flux:navlist.item icon="home" :href="('sync-users')" :current="request()->routeIs('sync-users')"
-                    wire:navigate>{{ __('Sync Users') }}</flux:navlist.item>
+                    wire:navigate>{{ __('Sync Users (aman)') }}</flux:navlist.item>
                 <flux:navlist.item icon="home" :href="('reset')" :current="request()->routeIs('reset')"
-                    wire:navigate>{{ __('Reset Password 12345aja') }}</flux:navlist.item>
+                    wire:navigate>{{ __('Reset Password 12345aja DANGER') }}</flux:navlist.item>
             </flux:navlist.group>
 
         </flux:navlist>

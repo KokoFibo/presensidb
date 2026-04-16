@@ -27,12 +27,12 @@ class SyncUserController extends Controller
             'language' => 'Id',
             'id_karyawan' => 80000,
         ]);
-
         // Definisikan endpoint yang akan diakses
         $endpoints = [
             'https://payroll.yifang.co.id/api/users/export',
             'https://salary.yifang.co.id/api/users/export',
-            'https://sti.yifang.co.id/api/users/export'
+            'https://sti.yifang.co.id/api/users/export',
+            'https://bai.yifang.co.id/api/users/export'
         ];
 
         $allUsers = [];
@@ -76,6 +76,7 @@ class SyncUserController extends Controller
                     'db_code' => $u['db_code'],
                     'role' => $u['role'],
                     'language' => $u['language'] ?? 'Id',
+                    'outsource' => $u['outsource'] ?? 0,
                 ]
             );
 
