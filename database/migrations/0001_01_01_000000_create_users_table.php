@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('id_karyawan')->unique();
             $table->integer('role');
             $table->string('language')->default('Id');
+            $table->integer('outsource')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

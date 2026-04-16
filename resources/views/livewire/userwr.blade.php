@@ -38,6 +38,7 @@
                 <tr>
                     <th class="px-4 py-3 text-left font-medium">ID Karyawan</th>
                     <th class="px-4 py-3 text-left font-medium">Nama</th>
+                    <th class="px-4 py-3 text-left font-medium">Outsource</th>
                     <th class="px-4 py-3 text-left font-medium">Email</th>
                     <th class="px-4 py-3 text-left font-medium">Perusahaan</th>
                     <th class="px-4 py-3 text-left font-medium">DB Code</th>
@@ -50,6 +51,8 @@
                     <tr class="border-b hover:bg-gray-50 transition">
                         <td class="px-4 py-3">{{ $user->id_karyawan }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900">{{ $user->name }}</td>
+                        <td class="px-4 py-3 font-medium text-gray-900">{{ $user->outsource == 1 ? 'OS' : 'Non-OS' }}
+                        </td>
                         <td class="px-4 py-3">{{ $user->email ?: '-' }}</td>
                         <td class="px-4 py-3">{{ $user->company_name ?: '-' }}</td>
                         <td class="px-4 py-3">{{ $user->db_code }}</td>

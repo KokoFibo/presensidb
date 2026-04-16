@@ -66,6 +66,7 @@ class SyncUserController extends Controller
         $updated = 0;
 
         foreach ($allUsers as $u) {
+            // dd($u);
             $user = User::updateOrCreate(
                 ['id_karyawan' => $u['id_karyawan']],
                 [
@@ -76,7 +77,7 @@ class SyncUserController extends Controller
                     'db_code' => $u['db_code'],
                     'role' => $u['role'],
                     'language' => $u['language'] ?? 'Id',
-                    'outsource' => $u['outsource'] ?? 0,
+                    'outsource' => $u['outsource'],
                 ]
             );
 
