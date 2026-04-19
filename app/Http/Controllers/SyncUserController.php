@@ -69,10 +69,10 @@ class SyncUserController extends Controller
         foreach ($allUsers as $u) {
             // dd($u);
             $user = User::updateOrCreate(
-                ['id_karyawan' => $u['id_karyawan']],
+                ['email' => $u['email']], // 🔑 sekarang pakai email
                 [
                     'name' => $u['name'],
-                    'email' => $u['email'],
+                    'id_karyawan' => $u['id_karyawan'], // tetap disimpan
                     'password' => $u['password'],
                     'company_name' => $u['company_name'],
                     'db_code' => $u['db_code'],
