@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('company_name')->nullable();
             $table->string('db_code');
-            $table->integer('id_karyawan')->unique();
+            $table->integer('id_karyawan');
             $table->integer('role');
             $table->string('language')->default('Id');
             $table->integer('outsource')->default(1);
