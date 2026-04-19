@@ -86,20 +86,31 @@ class UserController extends Controller
 
 
 
-    public function destroyByKaryawan($id_karyawan)
-    {
-        $user = User::where('id_karyawan', $id_karyawan)->first();
+    // public function destroyByKaryawan($id_karyawan, $email)
+    // {
+    //     $user = User::where('id_karyawan', $id_karyawan)->where('email', $email)->first();
 
-        if (!$user) {
-            return response()->json([
-                'message' => 'User tidak ditemukan'
-            ], 404);
-        }
+    //     if (!$user) {
+    //         return response()->json([
+    //             'message' => 'User tidak ditemukan'
+    //         ], 404);
+    //     }
+
+    //     $user->delete();
+
+    //     return response()->json([
+    //         'message' => 'User berhasil dihapus'
+    //     ], 200);
+    // }
+
+    public function destroyByEmail($id_karyawan, $email)
+    {
+        $user = User::where('email', $email)->firstOrFail();
 
         $user->delete();
 
         return response()->json([
             'message' => 'User berhasil dihapus'
-        ], 200);
+        ]);
     }
 }
