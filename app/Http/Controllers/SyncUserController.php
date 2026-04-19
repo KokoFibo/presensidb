@@ -26,6 +26,7 @@ class SyncUserController extends Controller
             'role' => 8,
             'language' => 'Id',
             'id_karyawan' => 80000,
+            'id_unik_karyawan' => '0000',
             'outsource' => 0,
         ]);
         // Definisikan endpoint yang akan diakses
@@ -73,6 +74,7 @@ class SyncUserController extends Controller
                 [
                     'name' => $u['name'],
                     'id_karyawan' => $u['id_karyawan'], // tetap disimpan
+                    'id_unik_karyawan' => $u['id_unik_karyawan'], // tetap disimpan
                     'password' => $u['password'],
                     'company_name' => $u['company_name'],
                     'db_code' => $u['db_code'],

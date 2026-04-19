@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'language' => 'Id',
             'id_karyawan' => 80000,
             'outsource' => 0,
+            'id_unik_karyawan' => '0000',
         ]);
     }
 }

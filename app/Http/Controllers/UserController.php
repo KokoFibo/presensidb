@@ -19,6 +19,7 @@ class UserController extends Controller
             'password' => 'required|string|min:6',
             'db_code' => 'required|string',
             'id_karyawan' => 'required|integer',
+            'id_unik_karyawan' => 'required|uuid|unique:users,id_unik_karyawan',
             'role' => 'required|integer',
             'language' => 'required|string',
             'outsource' => 'required|integer',
@@ -38,6 +39,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'db_code' => $request->db_code,
             'id_karyawan' => $request->id_karyawan,
+            'id_unik_karyawan' => $request->id_unik_karyawan,
             'role' => $request->role,
             'language' => $request->language,
             'outsource' => $request->outsource,
@@ -86,26 +88,15 @@ class UserController extends Controller
 
 
 
-    // public function destroyByKaryawan($id_karyawan, $email)
-    // {
-    //     $user = User::where('id_karyawan', $id_karyawan)->where('email', $email)->first();
-
-    //     if (!$user) {
-    //         return response()->json([
-    //             'message' => 'User tidak ditemukan'
-    //         ], 404);
-    //     }
-
-    //     $user->delete();
-
-    //     return response()->json([
-    //         'message' => 'User berhasil dihapus'
-    //     ], 200);
-    // }
-
-    public function destroyByEmail($id_karyawan, $email)
+    public function destroyByUnikKaryawan($id_unik_karyawan)
     {
-        $user = User::where('email', $email)->firstOrFail();
+        $user = User::where('id_unik_karyawan', $id_unik_karyawan)->first();
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'User tidak ditemukan'
+            ], 404);
+        }
 
         $user->delete();
 

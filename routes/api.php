@@ -23,8 +23,7 @@ Route::middleware('api.token')->group(function () {
 
     Route::post('/update-email', [UserController::class, 'updateEmail']);
 
-    Route::delete('/user/{email}', [UserController::class, 'destroyByEmail'])
-        ->where('email', '.*');
+    Route::delete('/user/{id_unik_karyawan}', [UserController::class, 'destroyByUnikKaryawan']);
 
     Route::post('/create-user', [UserController::class, 'store']);
 });

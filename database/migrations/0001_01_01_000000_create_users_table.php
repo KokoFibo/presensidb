@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('company_name')->nullable();
             $table->string('db_code');
             $table->integer('id_karyawan');
+            $table->uuid('id_unik_karyawan')->unique()->nullable();
+            // $table->string('id_unik_karyawan');
+
             $table->integer('role');
             $table->string('language')->default('Id');
             $table->integer('outsource')->default(1);
