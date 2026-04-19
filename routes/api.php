@@ -19,4 +19,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 
 // routes/api.php
-Route::post('/update-email', [UserController::class, 'updateEmail']);
+Route::middleware('api.token')->group(function () {
+
+    Route::post('/update-email', [UserController::class, 'updateEmail']);
+
+    Route::delete('/user/{id_karyawan}', [UserController::class, 'destroyByKaryawan']);
+
+    Route::post('/create-user', [UserController::class, 'store']);
+});
