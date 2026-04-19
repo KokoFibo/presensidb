@@ -28,6 +28,7 @@ class User extends Authenticatable
         'company_name',
         'db_code',
         'id_karyawan',
+        'id_unik_karyawan',
         'role',
         'language',
         'outsource',

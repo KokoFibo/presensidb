@@ -37,6 +37,7 @@
             <thead class="bg-gray-50 text-gray-800 border-b">
                 <tr>
                     <th class="px-4 py-3 text-left font-medium">ID Karyawan</th>
+                    <th class="px-4 py-3 text-left font-medium">ID Unik Karyawan</th>
                     <th class="px-4 py-3 text-left font-medium">Nama</th>
                     <th class="px-4 py-3 text-left font-medium">Outsource</th>
                     <th class="px-4 py-3 text-left font-medium">Email</th>
@@ -50,6 +51,7 @@
                 @forelse ($users as $user)
                     <tr class="border-b hover:bg-gray-50 transition">
                         <td class="px-4 py-3">{{ $user->id_karyawan }}</td>
+                        <td class="px-4 py-3">{{ $user->id_unik_karyawan }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900">{{ $user->name }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900">{{ $user->outsource == 1 ? 'OS' : 'Non-OS' }}
                         </td>
