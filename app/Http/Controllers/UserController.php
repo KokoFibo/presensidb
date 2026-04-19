@@ -18,7 +18,7 @@ class UserController extends Controller
             'email' => 'nullable|email|unique:users,email',
             'password' => 'required|string|min:6',
             'db_code' => 'required|string',
-            'id_karyawan' => 'required|integer|unique:users,id_karyawan',
+            'id_karyawan' => 'required|integer',
             'role' => 'required|integer',
             'language' => 'required|string',
             'outsource' => 'required|integer',
