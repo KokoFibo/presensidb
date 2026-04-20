@@ -26,4 +26,6 @@ Route::middleware('api.token')->group(function () {
     Route::delete('/user/{id_unik_karyawan}', [UserController::class, 'destroyByUnikKaryawan']);
 
     Route::post('/create-user', [UserController::class, 'store']);
+
+    Route::post('/update-company-name', [UserController::class, 'updateCompanyName']);
 });

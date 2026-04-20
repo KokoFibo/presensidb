@@ -10,6 +10,42 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function updateCompanyName(Request $request)
+    {
+        // Validasi input
+        $validator = Validator::make($request->all(), [
+            'id_unik_karyawan' => 'required|string',
+            'company_name'     => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validasi gagal',
+                'errors'  => $validator->errors(),
+            ], 422);
+        }
+
+        // Cari karyawan
+        $user = User::where('id_unik_karyawan', $request->id_unik_karyawan)->first();
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Karyawan tidak ditemukan',
+            ], 404);
+        }
+
+        // Update company_name
+        $user->company_name = $request->company_name;
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Company name berhasil diupdate',
+            'data'    => $user,
+        ]);
+    }
 
     public function store(Request $request)
     {
