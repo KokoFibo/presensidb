@@ -10,12 +10,14 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function updateCompanyName(Request $request)
+    public function updateUserData(Request $request)
     {
         // Validasi input
         $validator = Validator::make($request->all(), [
             'id_unik_karyawan' => 'required|string',
             'company_name'     => 'required|string|max:255',
+            'name'     => 'required|string|max:255',
+            'outsource'     => 'required|integer|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -38,6 +40,8 @@ class UserController extends Controller
 
         // Update company_name
         $user->company_name = $request->company_name;
+        $user->name = $request->name;
+        $user->outsource = $request->outsource;
         $user->save();
 
         return response()->json([
