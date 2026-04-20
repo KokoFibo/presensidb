@@ -27,5 +27,5 @@ Route::middleware('api.token')->group(function () {
 
     Route::post('/create-user', [UserController::class, 'store']);
 
-    Route::post('/update-company-name', [UserController::class, 'updateCompanyName']);
+    Route::post('/update-user-data', [UserController::class, 'updateUserData']);
 });
