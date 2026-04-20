@@ -18,7 +18,6 @@ class UserController extends Controller
             'company_name'     => 'required|string|max:255',
             'name'     => 'required|string|max:255',
             'outsource'     => 'required|integer|max:255',
-            'db_code'     => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -43,7 +42,6 @@ class UserController extends Controller
         $user->company_name = $request->company_name;
         $user->name = $request->name;
         $user->outsource = $request->outsource;
-        $user->db_code = $request->db_code;
         $user->save();
 
         return response()->json([
