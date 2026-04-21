@@ -60,7 +60,7 @@ class Userwr extends Component
                 })
             );
 
-        $users = $query->orderBy('updated_at')->paginate($this->perPage);
+        $users = $query->orderBy('updated_at', 'desc')->paginate($this->perPage);
         $companies = User::select('company_name')->distinct()->pluck('company_name')->filter();
 
         return view('livewire.userwr', [
