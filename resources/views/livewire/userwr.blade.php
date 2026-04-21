@@ -4,7 +4,7 @@
     <!-- Filter -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
         <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-            <input type="text" wire:model.live="search" placeholder="Cari nama atau ID karyawan..."
+            <input type="text" wire:model.live="search" placeholder="Cari nama, ID karyawan dan email..."
                 class="w-full sm:w-64 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 text-sm">
 
             <select wire:model.live="company"
@@ -19,6 +19,8 @@
                 class="w-full sm:w-36 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
                 <option value="5">5 / Halaman</option>
                 <option value="10">10 / Halaman</option>
+                <option value="15">15 / Halaman</option>
+                <option value="20">20 / Halaman</option>
                 <option value="25">25 / Halaman</option>
             </select>
         </div>
@@ -45,6 +47,7 @@
                     <th class="px-4 py-3 text-left font-medium">DB Code</th>
                     <th class="px-4 py-3 text-left font-medium">Role</th>
                     <th class="px-4 py-3 text-left font-medium">Bahasa</th>
+                    <th class="px-4 py-3 text-left font-medium">Updated at</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +63,7 @@
                         <td class="px-4 py-3">{{ $user->db_code }}</td>
                         <td class="px-4 py-3">{{ $user->role }}</td>
                         <td class="px-4 py-3">{{ $user->language }}</td>
+                        <td class="px-4 py-3">{{ $user->updated_at }}</td>
                     </tr>
                 @empty
                     <tr>

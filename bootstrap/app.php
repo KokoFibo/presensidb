@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(\Illuminate\Http\Middleware\HandleCors::class);
         $middleware->alias([
             'api.token' => \App\Http\Middleware\ApiTokenMiddleware::class,
+            'only.kokonacci' => \App\Http\Middleware\OnlyKokonacci::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
