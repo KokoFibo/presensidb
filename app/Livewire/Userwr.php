@@ -40,7 +40,8 @@ class Userwr extends Component
                 fn($q) =>
                 $q->where(function ($q2) {
                     $q2->where('name', 'like', "%{$this->search}%")
-                        ->orWhere('id_karyawan', 'like', "%{$this->search}%");
+                        ->orWhere('id_karyawan', 'like', "%{$this->search}%")
+                        ->orWhere('email', 'like', "%{$this->search}%");
                 })
             )
             ->when(
@@ -59,7 +60,7 @@ class Userwr extends Component
                 })
             );
 
-        $users = $query->orderBy('name')->paginate($this->perPage);
+        $users = $query->orderBy('updated_at')->paginate($this->perPage);
         $companies = User::select('company_name')->distinct()->pluck('company_name')->filter();
 
         return view('livewire.userwr', [

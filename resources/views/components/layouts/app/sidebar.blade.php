@@ -19,10 +19,14 @@
                     wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                 <flux:navlist.item icon="home" :href="('users')" :current="request()->routeIs('users')"
                     wire:navigate>{{ __('Users') }}</flux:navlist.item>
-                <flux:navlist.item icon="home" :href="('sync-users')" :current="request()->routeIs('sync-users')"
-                    wire:navigate>{{ __('Sync Users (aman)') }}</flux:navlist.item>
-                <flux:navlist.item icon="home" :href="('reset')" :current="request()->routeIs('reset')"
-                    wire:navigate>{{ __('Reset Password 12345aja DANGER') }}</flux:navlist.item>
+                {{-- div ini buat menu nya tidak bisa di klik --}}
+                <div class="pointer-events-none opacity-50 select-none">
+                    <flux:navlist.item icon="home" :href="('sync-users')" :current="request()->routeIs('sync-users')"
+                        wire:navigate>{{ __('Sync Users (aman)') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" :href="('reset')" :current="request()->routeIs('reset')"
+                        wire:navigate>{{ __('Reset Password 12345aja DANGER') }}</flux:navlist.item>
+                </div>
+
             </flux:navlist.group>
 
         </flux:navlist>
