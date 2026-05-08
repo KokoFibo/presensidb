@@ -28,4 +28,6 @@ Route::middleware('api.token')->group(function () {
     Route::post('/create-user', [UserController::class, 'store']);
 
     Route::post('/update-user-data', [UserController::class, 'updateUserData']);
+
+    Route::post('/reset-password', [UserController::class, 'resetPassword']);
 });

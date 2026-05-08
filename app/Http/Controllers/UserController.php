@@ -2,14 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'tanggal_lahir' => 'required|date',
+        ]);
+
+        $user = User::where('email', $request->email)
+            ->first();
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Email atau tanggal lahir tidak cocok'
+            ], 404);
+        }
+
+        // Format password baru: ddmmyy
+        $newPassword = Carbon::parse($request->tanggal_lahir)->format('dmy');
+
+        // Hash password
+        $user->password = Hash::make($newPassword);
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            // 'message' => 'Password berhasil direset.',
+            'message' => 'Password berhasil direset:' . $newPassword,
+        ]);
+    }
+
     public function updateUserData(Request $request)
     {
         // Validasi input
