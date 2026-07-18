@@ -14,8 +14,19 @@ class Userwr extends Component
     public $company = '';
     public $perPage = 10;
     public $incompleteOnly = false; // 🔥 filter data tidak lengkap
+    public $deleteId = null;
 
     protected $queryString = ['search', 'company', 'page', 'incompleteOnly'];
+
+
+    public function delete($id)
+    {
+        User::findOrFail($id)->delete();
+
+        $this->deleteId = null;
+
+        session()->flash('success', 'User berhasil dihapus.');
+    }
 
     public function updatingSearch()
     {
