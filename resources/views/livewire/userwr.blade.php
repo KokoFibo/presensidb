@@ -38,6 +38,7 @@
         <table class="min-w-full text-sm text-gray-700">
             <thead class="bg-gray-50 text-gray-800 border-b">
                 <tr>
+                    <th class="px-4 py-3 text-center font-medium">Action</th>
                     <th class="px-4 py-3 text-left font-medium">ID Karyawan</th>
                     <th class="px-4 py-3 text-left font-medium">ID Unik Karyawan</th>
                     <th class="px-4 py-3 text-left font-medium">Nama</th>
@@ -53,10 +54,20 @@
             <tbody>
                 @forelse ($users as $user)
                     <tr class="border-b hover:bg-gray-50 transition">
+
+                        <td class="px-4 py-3 text-center">
+                            <button wire:click="delete({{ $user->id }})"
+                                wire:confirm="Apakah Anda yakin ingin menghapus user ini?"
+                                class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition">
+                                Hapus
+                            </button>
+                        </td>
+
                         <td class="px-4 py-3">{{ $user->id_karyawan }}</td>
                         <td class="px-4 py-3">{{ $user->id_unik_karyawan }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900">{{ $user->name }}</td>
-                        <td class="px-4 py-3 font-medium text-gray-900">{{ $user->outsource == 1 ? 'OS' : 'Non-OS' }}
+                        <td class="px-4 py-3">
+                            {{ $user->outsource == 1 ? 'OS' : 'Non-OS' }}
                         </td>
                         <td class="px-4 py-3">{{ $user->email ?: '-' }}</td>
                         <td class="px-4 py-3">{{ $user->company_name ?: '-' }}</td>
@@ -67,7 +78,9 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="px-4 py-6 text-center text-gray-500">Tidak ada data ditemukan.</td>
+                        <td colspan="11" class="px-4 py-6 text-center text-gray-500">
+                            Tidak ada data ditemukan.
+                        </td>
                     </tr>
                 @endforelse
             </tbody>
